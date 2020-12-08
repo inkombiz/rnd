@@ -8,10 +8,10 @@ RUN apk update && apk add bash
 WORKDIR /app
 
 # Copy the fat jar into the container at /app
-COPY /target/api-inkombizz-master.jar /app
+COPY /target/api-inkombizz-master-app.jar /app
 
 # Make port 8081 available to the world outside this container
 EXPOSE 8081
 
 # Run jar file when the container launches
-CMD ["java", "-jar", "api-inkombizz-master.jar"]
+CMD ["java", "-jar", "api-inkombizz-master-app.jar"]

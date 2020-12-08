@@ -99,7 +99,7 @@ With the **Dockerfile** we can define, configure and initialize our image and co
 4. The files we need to copy into our image. We will need only the **Uber Jar** file so let's copy it into the working dir;
 
 ```
-	COPY /target/api-inkombizz-master.jar /app
+	COPY /target/api-inkombizz-master-app.jar /app
 ```
 
 5. The port number(s) that we need to expose to reach out from the container. Spring Boot default port is 8080;
@@ -111,7 +111,7 @@ With the **Dockerfile** we can define, configure and initialize our image and co
 6. The commands that we need to run as the container goes live. And we need to add simply "java -jar <jar_file>.jar" format;
 
 ```
-	CMD ["java", "-jar", "api-inkombizz-master.jar"]
+	CMD ["java", "-jar", "api-inkombizz-master-app.jar"]
 ```
 
 Notify that the CMD(command) parameters are separated with comma.
@@ -130,13 +130,13 @@ Then our **Dockerfile** will be as below;
 	WORKDIR /app
 
 	# Copy the fat jar into the container at /app
-	COPY /target/api-inkombizz-master.jar /app
+	COPY /target/api-inkombizz-master-app.jar /app
 
 	# Make port 8080 available to the world outside this container
 	EXPOSE 8080
 
 	# Run jar file when the container launches
-	CMD ["java", "-jar", "api-inkombizz-master.jar"]
+	CMD ["java", "-jar", "api-inkombizz-master-app.jar"]
 ```
 
 Now our [Dockerfile](https://github.com/bzdgn/docker-spring-boot-java-web-service-example/blob/master/Dockerfile) is all set, we can directly build the image.
@@ -189,13 +189,13 @@ As you run the command which is written above, a successful example output will 
 	 ---> Running in c94cbad8627a
 	Removing intermediate container c94cbad8627a
 	 ---> 5a58ac387fe7
-	Step 4/6 : COPY /target/api-inkombizz-master.jar /app
+	Step 4/6 : COPY /target/api-inkombizz-master-app.jar /app
 	 ---> aa5930ee4a75
 	Step 5/6 : EXPOSE 8080
 	 ---> Running in 851b519d4514
 	Removing intermediate container 851b519d4514
 	 ---> 210ed5d1dc3f
-	Step 6/6 : CMD ["java", "-jar", "api-inkombizz-master.jar"]
+	Step 6/6 : CMD ["java", "-jar", "api-inkombizz-master-app.jar"]
 	 ---> Running in 55b84275e095
 	Removing intermediate container 55b84275e095
 	 ---> a0c355a25236
@@ -282,10 +282,10 @@ A successful output is as below;
 	bash-4.4# pwd
 	/app
 	bash-4.4# ls
-	api-inkombizz-master.jar
+	api-inkombizz-master-app.jar
 	bash-4.4# ps -ef
 	PID   USER     TIME  COMMAND
-	    1 root      0:08 java -jar api-inkombizz-master.jar
+	    1 root      0:08 java -jar api-inkombizz-master-app.jar
 	   45 root      0:00 /bin/bash
 	   53 root      0:00 ps -ef
 	bash-4.4# exit
