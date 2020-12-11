@@ -1,4 +1,4 @@
-package com.inkombizz.master.model.v1;
+package com.inkombizz.master.resource.v1;
 
 import java.util.Date;
 
@@ -8,8 +8,6 @@ import javax.persistence.EntityListeners;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -27,6 +25,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.inkombizz.master.common.StatusEnum;
+import com.sun.istack.NotNull;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -39,35 +38,18 @@ import lombok.Setter;
 @Setter
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-@Table(name = "scr_user")
-public class UserProfileModel {
+@Table(name = "scr_role")
+public class RoleModel {
     
     @Id
     @Column(name = "Code")
     private String code;
     
-    @JsonIgnore
-    @Column(name = "FirstName", updatable = false)
-    private String firstName;
-
-    @JsonIgnore
-    @Column(name = "LastName", updatable = false)
-    private String fLastName;
-    
-    @Min(18)
-    @Digits(fraction = 0, integer = 2, message = "Harus Berisikan Nomor")
-    @Column(name = "Age")
-    private int age = 18;
-    
-    @Past(message = "Tanggal Tidak boleh Lebih besar dari tanggal sekarang")
-    @Column(name = "BirthDate")
-    private Date birthDate;
-    
-    @Future(message = "Tanggal Tidak boleh Lebih kecil dari tanggal sekarang")
-    @Column(name = "PassDate")
-    private Date passDate;
-    
     @NotBlank
+    @Column(name = "Name")
+    private String name;
+    
+//    @NotNull
     @Column(name = "ActiveStatus")
     @Enumerated(EnumType.ORDINAL)
     private StatusEnum activeStatus;

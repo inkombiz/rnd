@@ -20,7 +20,7 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.inkombizz.master.common.SecurityConstants;
-import com.inkombizz.master.model.v1.UserModel;
+import com.inkombizz.master.resource.v1.UserModel;
 
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 	private AuthenticationManager authenticationManager;

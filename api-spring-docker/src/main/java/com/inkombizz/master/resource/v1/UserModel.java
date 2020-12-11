@@ -1,4 +1,4 @@
-package com.inkombizz.master.model.v1;
+package com.inkombizz.master.resource.v1;
 
 import java.util.Date;
 

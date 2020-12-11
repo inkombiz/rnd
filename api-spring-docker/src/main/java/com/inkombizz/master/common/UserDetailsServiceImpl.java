@@ -14,8 +14,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
-import com.inkombizz.master.model.v1.UserModel;
 import com.inkombizz.master.repository.v1.UserRepository;
+import com.inkombizz.master.resource.v1.UserModel;
 /**
  *
  * @author de4ragil

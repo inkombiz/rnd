@@ -6,7 +6,8 @@
 package com.inkombizz.master.common;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.inkombizz.master.model.v1.UserModel;
+import com.inkombizz.master.resource.v1.UserModel;
+
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;

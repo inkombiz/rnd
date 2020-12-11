@@ -21,8 +21,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.inkombizz.master.model.v1.RoleModel;
 import com.inkombizz.master.repository.v1.RoleRepository;
+import com.inkombizz.master.resource.v1.RoleModel;
 import com.inkombizz.master.util.Response;
 
 /**
