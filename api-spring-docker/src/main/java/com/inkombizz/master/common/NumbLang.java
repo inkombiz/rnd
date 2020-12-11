@@ -1,4 +1,4 @@
-package com.inkombizz.master.util;
+package com.inkombizz.master.common;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -15,7 +15,7 @@ public class NumbLang {
 	private String[] nb;
 	private String[] mt;
 
-	NumbLang() {
+	public NumbLang() {
 		IDR();
 	}
 

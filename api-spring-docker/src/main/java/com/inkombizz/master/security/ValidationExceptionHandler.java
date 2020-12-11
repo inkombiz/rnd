@@ -1,4 +1,4 @@
-package com.inkombizz.master.setting;
+package com.inkombizz.master.security;
 
 import java.util.HashMap;
 import java.util.List;

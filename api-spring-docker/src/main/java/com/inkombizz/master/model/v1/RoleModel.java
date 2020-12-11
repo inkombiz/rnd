@@ -24,7 +24,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.inkombizz.master.util.StatusEnum;
+import com.inkombizz.master.common.StatusEnum;
 import com.sun.istack.NotNull;
 
 import lombok.Getter;

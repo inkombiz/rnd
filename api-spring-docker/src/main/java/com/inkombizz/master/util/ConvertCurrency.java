@@ -3,6 +3,8 @@ package com.inkombizz.master.util;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 
+import com.inkombizz.master.common.NumbLang;
+
 public class ConvertCurrency extends NumbLang{
 
 	public static String toStringIDR(long val) {

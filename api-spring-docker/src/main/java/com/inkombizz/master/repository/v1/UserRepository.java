@@ -15,9 +15,12 @@ import com.inkombizz.master.service.v1.UserService;
  */
 @Repository
 public interface UserRepository extends JpaRepository<UserModel, String> {
+
+//	User
+	UserModel findByUsername(String username);
 	
 //	Same Query
-	List<UserModel> findByUsername(String search);
+//	List<UserModel> findByUsername(String search);
 	
 //	Like Query Case Sensitive
 	List<UserModel> findByUsernameContaining(String search);
