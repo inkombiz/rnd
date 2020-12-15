@@ -23,25 +23,22 @@ import java.util.Collections;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-//
-//    @Autowired
-//    private UserDetailsService userDetailsService;
-
+	
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		System.out.println("HERE");
+		
 		String password=passwordEncoder.encode("admin");
 		auth.inMemoryAuthentication().withUser("admin").password(password).roles("admin");
-		
 		super.configure(auth);
-		
-//        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder);
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+		System.out.println("HERE");
         http.authorizeRequests()
                 .antMatchers("/login")
                 .permitAll()
@@ -68,6 +65,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
+    	System.out.println("HERE");
         web.ignoring().antMatchers("/resources/**", "/static/**", "/assets/**");
     }
 }
