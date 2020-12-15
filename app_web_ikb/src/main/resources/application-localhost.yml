@@ -1,0 +1,8 @@
+server:
+  port: 1111
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/ikb_coursenet?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: mrpuser
+    password: admin
+    driver-class-name: com.mysql.cj.jdbc.Driver

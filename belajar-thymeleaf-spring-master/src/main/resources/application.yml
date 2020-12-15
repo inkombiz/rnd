@@ -1,0 +1,10 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: validate
+  thymeleaf:
+    cache: false
+  profiles:
+    #active: heroku
+    active: localhost
+    #active: docker
