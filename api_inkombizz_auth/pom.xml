@@ -4,10 +4,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.inkombizz.master</groupId>
-    <artifactId>api-inkombizz-master</artifactId>
+    <artifactId>api_inkombizz_auth</artifactId>
     <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>api-inkombizz-master</name>
+    <name>api_inkombizz_auth</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -87,7 +87,7 @@
     </dependencies>
 
     <build>
-    	<finalName>api-inkombizz-master-app</finalName>
+    	<finalName>api_inkombizz_auth</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
