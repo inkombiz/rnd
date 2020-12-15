@@ -9,7 +9,7 @@ public class IndexController {
 
     @RequestMapping("")
     private String redirectIndex(){
-        return "redirect:products/page";
+        return "redirect:page";
     }
     
     @GetMapping("/login")

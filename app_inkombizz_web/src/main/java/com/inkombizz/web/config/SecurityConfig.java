@@ -23,16 +23,19 @@ import java.util.Collections;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
-    @Autowired
-    private UserDetailsService userDetailsService;
+//
+//    @Autowired
+//    private UserDetailsService userDetailsService;
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder);
+		String password=passwordEncoder.encode("admin");
+		auth.inMemoryAuthentication().withUser("admin").password(password).roles("admin");
+		super.configure(auth);
+//        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder);
     }
 
     @Override
