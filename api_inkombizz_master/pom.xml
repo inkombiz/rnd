@@ -38,7 +38,7 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
-			<groupId>com.master0</groupId>
+			<groupId>com.auth0</groupId>
 			<artifactId>java-jwt</artifactId>
 			<version>3.4.0</version>
 		</dependency>
