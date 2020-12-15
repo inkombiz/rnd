@@ -1,50 +1,32 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Header</title>
-    <div th:fragment="header-css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    </div>
-
-    <div th:fragment="header-custom-style">
-        <style>
-            /* Remove the navbar's default margin-bottom and rounded borders */
-            .navbar {
-                margin-bottom: 0;
-                border-radius: 0;
-            }
-        </style>
-    </div>
-
-</head>
-<body>
-<div th:fragment="header">
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <div class="navbar-brand">
-                    Logo
-                </div>
-            </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a th:href="@{/products/page}">Products</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a th:href="@{/logout}"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<div th:fragment="header-css">
+  <link href="assets/plugins/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" />
+  <link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" />
+  <link href="assets/plugins/custom/prismjs/prismjs.bundle.css" rel="stylesheet" />
+  <link href="assets/css/style.bundle.css" rel="stylesheet" />
+  <link href="assets/css/themes/layout/header/base/light.css" rel="stylesheet" />
+  <link href="assets/css/themes/layout/header/menu/light.css" rel="stylesheet" />
+  <link href="assets/css/themes/layout/brand/dark.css" rel="stylesheet" />
+  <link href="assets/css/themes/layout/aside/dark.css" rel="stylesheet" />
+  <link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" />
 </div>
 
-</body>
-</html>
+<div th:fragment="header-js">
+  <script type="text/javascript" src="assets/js/jquery-3.5.1.js"></script>
+  <script type="text/javascript" src="assets/plugins/global/plugins.bundle.js"></script>
+  <script type="text/javascript" src="assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
+  <script type="text/javascript" src="assets/js/scripts.bundle.js"></script>
+  <script type="text/javascript" src="assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
+  <script type="text/javascript" src="assets/js/pages/widgets.js"></script>
+  <script type="text/javascript" src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
+  <script type="text/javascript" src="assets/js/pace.js"></script>
+  <script type="text/javascript" src="assets/js/jquery.loading.js"></script>
+  <script type="text/javascript" src="assets/js/jquery.validate.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/datatables-buttons-excel-styles@1.0.1/js/buttons.html5.styles.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/datatables-buttons-excel-styles@1.0.1/js/buttons.html5.styles.templates.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.js"></script>
+  <script src="https://files.codepedia.info/files/uploads/iScripts/html2canvas.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+</div>

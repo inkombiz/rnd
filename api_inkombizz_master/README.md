@@ -28,7 +28,7 @@ The reason we are doing so is, we need to reference the **.jar** file in the [Do
 
 ```
     <properties>
-        <start-class>com.inkombizz.auth.DockerApp</start-class>
+        <start-class>com.inkombizz.master.DockerApp</start-class>
     </properties>
 ```
 
@@ -39,7 +39,7 @@ In our example, you will see the properties as below in the [pom.xml](https://gi
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-        <start-class>com.inkombizz.auth.DockerApp</start-class>
+        <start-class>com.inkombizz.master.DockerApp</start-class>
     </properties>
 ```
 

@@ -3,16 +3,16 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.inkombizz.auth</groupId>
-    <artifactId>api_inkombizz_auth</artifactId>
+    <groupId>com.inkombizz.master</groupId>
+    <artifactId>api_inkombizz_master</artifactId>
     <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>api_inkombizz_auth</name>
+    <name>api_inkombizz_master</name>
     <url>http://maven.apache.org</url>
 
     <properties>
         <java.version>1.8</java.version>
-        <start-class>com.inkombizz.auth.ApiApplication</start-class>
+        <start-class>com.inkombizz.master.ApiApplication</start-class>
     </properties>
 
 	<parent>
@@ -38,7 +38,7 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
-			<groupId>com.auth0</groupId>
+			<groupId>com.master0</groupId>
 			<artifactId>java-jwt</artifactId>
 			<version>3.4.0</version>
 		</dependency>
@@ -87,7 +87,7 @@
     </dependencies>
 
     <build>
-    	<finalName>api_inkombizz_auth</finalName>
+    	<finalName>api_inkombizz_master</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
