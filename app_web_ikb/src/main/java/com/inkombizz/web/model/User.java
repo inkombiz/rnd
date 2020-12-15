@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "t_user")
+@Table(name = "auth_user")
 @Data
 public class User implements UserDetails {
 
@@ -23,7 +23,7 @@ public class User implements UserDetails {
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
-            name = "t_user_authorities",
+            name = "auth_user_authorities",
             joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = {@JoinColumn(name = "authority_id")}
     )
