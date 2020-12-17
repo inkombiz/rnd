@@ -1,5 +1,5 @@
 # Use an official OpenJDK runtime as a parent image
-FROM tomcat:8-jre8-alpine
+FROM tomcat:latest
 
 LABEL maintainer="imam@inkombizz.co.id"
 
@@ -13,4 +13,5 @@ COPY /target/app_inkombizz_web.war /usr/local/tomcat/webapps/
 EXPOSE 8282
 
 # Run jar file when the container launches
+CMD chmod +x /usr/local/tomcat/bin/catalina.sh
 CMD ["catalina.sh", "run"]
