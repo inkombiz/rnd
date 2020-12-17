@@ -1,4 +1,4 @@
-app="web_app"
+app="app_inkombizz_web"
 mvn package
 docker rm $(docker stop $(docker ps -a -q --filter ancestor=${app} --format="{{.ID}}"))
 docker build -t ${app} .

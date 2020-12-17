@@ -1,5 +1,5 @@
 # Use an official OpenJDK runtime as a parent image
-FROM tomcat:latest
+FROM bitnami/tomcat:9.0
 
 LABEL maintainer="imam@inkombizz.co.id"
 
