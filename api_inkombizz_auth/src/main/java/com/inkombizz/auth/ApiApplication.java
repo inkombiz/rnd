@@ -11,7 +11,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 @SpringBootApplication(exclude = { ErrorMvcAutoConfiguration.class })
 public class ApiApplication 
 	extends SpringBootServletInitializer{
-
+	//Test Auth by Waw!
 	public static void main(String[] args) {
 		SpringApplication.run(ApiApplication.class, args);
 	}
