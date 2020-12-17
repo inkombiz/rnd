@@ -5,7 +5,7 @@ FROM tomcat:latest
 WORKDIR /usr/local/tomcat/webapps/
 
 # Copy the fat jar into the container at /app
-COPY /target/api_inkombizz_master.jar /usr/local/tomcat/webapps/
+COPY /target/api_inkombizz_master.war /usr/local/tomcat/webapps/
 
 # Make port 8282 available to the world outside this container
 EXPOSE 8282
