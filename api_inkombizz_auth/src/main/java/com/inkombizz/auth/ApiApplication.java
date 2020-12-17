@@ -13,6 +13,7 @@ public class ApiApplication
 	extends SpringBootServletInitializer{
 	//Test Auth by Waw!
 	//Test Auth by Waw! --2
+	//Test Auto ruN
 	public static void main(String[] args) {
 		SpringApplication.run(ApiApplication.class, args);
 	}
