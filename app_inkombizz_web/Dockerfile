@@ -1,5 +1,5 @@
 # Use an official OpenJDK runtime as a parent image
-FROM tomcat:latest
+FROM tomcat:8.5.4-jre8
 
 # Set the working directory to /app
 WORKDIR /usr/local/tomcat/webapps/
