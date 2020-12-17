@@ -1,8 +1,10 @@
 # Use an official OpenJDK runtime as a parent image
-FROM tomcat:8.5.4-jre8
+FROM tomcat:8.0-alpine
+
+LABEL maintainer="imam@inkombizz.co.id"
 
 # Set the working directory to /app
-WORKDIR /usr/local/tomcat/webapps/
+# WORKDIR /usr/local/tomcat/webapps/
 
 # Copy the fat jar into the container at /app
 COPY /target/app_inkombizz_web.war /usr/local/tomcat/webapps/
