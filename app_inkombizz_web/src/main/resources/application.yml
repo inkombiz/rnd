@@ -1,9 +1,2 @@
-spring:
-  jpa:
-    hibernate:
-      ddl-auto: update
-  thymeleaf:
-    cache: false
-  profiles:
-    active: localhost
-    #active: docker
+server:
+  port: 9010

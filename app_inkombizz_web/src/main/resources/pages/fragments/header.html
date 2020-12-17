@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<div th:fragment="css">
+		<link th:href="@{assets/plugins/custom/fullcalendar/fullcalendar.bundle.css}" rel="stylesheet" />
+		<link th:href="@{assets/plugins/global/plugins.bundle.css}" rel="stylesheet" />
+		<link th:href="@{assets/plugins/custom/prismjs/prismjs.bundle.css}" rel="stylesheet" />
+		<link th:href="@{assets/css/style.bundle.css}" rel="stylesheet" />
+		<link th:href="@{assets/css/themes/layout/header/base/light.css}" rel="stylesheet" />
+		<link th:href="@{assets/css/themes/layout/header/menu/light.css}" rel="stylesheet" />
+		<link th:href="@{assets/css/themes/layout/brand/dark.css}" rel="stylesheet" />
+		<link th:href="@{assets/css/themes/layout/aside/dark.css}" rel="stylesheet" />
+		<link href="<?php echo $logo; ?>" rel="shortcut icon" />
+		<link th:href="@{assets/plugins/custom/datatables/datatables.bundle.css}" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" />
+		<style>
+			div.scrollmenu {
+				background-color: #333;
+				overflow: auto;
+				white-space: nowrap;
+			}
+
+			div.scrollmenu a {
+				display: inline-block;
+				color: white;
+				text-align: center;
+				padding: 14px;
+				text-decoration: none;
+			}
+
+			.bootstrap-switch .bootstrap-switch-handle-on,
+			.bootstrap-switch .bootstrap-switch-handle-off,
+			.bootstrap-switch .bootstrap-switch-label {
+				font-size: 1rem;
+				font-weight: 800;
+			}
+
+			div.scrollmenu a:hover {
+				background-color: #777;
+			}
+
+			.image-input .image-input-wrapper {
+				width: 14rem;
+				height: 14rem;
+			}
+
+			.tagify {
+				min-height: calc(1em + 0.5rem);
+				padding: 1rem;
+			}
+
+			.dt-body-nowrap {
+				white-space: nowrap;
+			}
+
+			.select2-container--default .select2-selection--single .select2-selection__rendered {
+				line-height: 1;
+			}
+
+			.btn.btn-tool {
+				color: #ffffff;
+				background-color: #9e7382;
+				border-color: #ffffff;
+				font-weight: 900;
+			}
+
+
+			#id_table_host.table tr td {
+				padding: 0px 10px;
+				font-size: 1rem;
+			}
+
+			table tr td>.btn.btn-icon {
+				height: calc(1em + 1rem + 2px);
+				width: calc(1em + 1rem + 2px);
+			}
+
+			button.btn {
+				padding: 0.5rem 0.5rem;
+				font-weight: 600;
+			}
+
+			table.dataTable thead tr {
+				background-color: #f54d5f;
+			}
+
+			table.dataTable thead>tr>th.sorting_asc,
+			table.dataTable thead>tr>th.sorting_desc,
+			table.dataTable thead>tr>th.sorting,
+			table.dataTable thead>tr>td.sorting_asc,
+			table.dataTable thead>tr>td.sorting_desc,
+			table.dataTable thead>tr>td.sorting {
+				padding: 1px 20px;
+				font-size: 1rem;
+				font-weight: 800;
+			}
+
+			.dataTables_wrapper .dataTable th,
+			.dataTables_wrapper .dataTable td {
+				padding: 0.5rem 20px;
+			}
+
+			.dataTables_wrapper .dataTable {
+				margin: 0 0 !important;
+			}
+
+			.dataTables_wrapper .dataTable th.sorting_asc,
+			.dataTables_wrapper .dataTable th.sorting_desc,
+			.dataTables_wrapper .dataTable td.sorting_asc,
+			.dataTables_wrapper .dataTable td.sorting_desc {
+				color: #ffffff !important;
+			}
+
+			.dataTables_wrapper .dataTable th.sorting_asc:before,
+			.dataTables_wrapper .dataTable th.sorting_asc:after,
+			.dataTables_wrapper .dataTable th.sorting_desc:before,
+			.dataTables_wrapper .dataTable th.sorting_desc:after,
+			.dataTables_wrapper .dataTable td.sorting_asc:before,
+			.dataTables_wrapper .dataTable td.sorting_asc:after,
+			.dataTables_wrapper .dataTable td.sorting_desc:before,
+			.dataTables_wrapper .dataTable td.sorting_desc:after {
+				opacity: 1;
+				color: #ffffff !important;
+			}
+
+			.dataTables_wrapper .dataTable tbody tr.selected td {
+				background-color: #ECF0F3;
+				border-left-color: #ECF0F3;
+				border-right-color: #ECF0F3;
+				color: #464E5F;
+				font-weight: 900;
+			}
+
+			.custom-select-sm {
+				height: calc(1em + 1rem);
+				padding-top: 0;
+				padding-bottom: 0;
+				padding-left: 0.75rem;
+				font-size: 0.925rem;
+			}
+
+			.form-control-sm {
+				height: calc(1em + 1rem);
+				padding: 0 1em;
+				font-size: 0.925rem;
+				line-height: 1.35;
+				border-radius: 0.28rem;
+			}
+
+			.pace {
+				-webkit-pointer-events: none;
+				pointer-events: none;
+
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				user-select: none;
+
+				-webkit-box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				-ms-box-sizing: border-box;
+				-o-box-sizing: border-box;
+				box-sizing: border-box;
+
+				-webkit-border-radius: 10px;
+				-moz-border-radius: 10px;
+				border-radius: 10px;
+
+				-webkit-background-clip: padding-box;
+				-moz-background-clip: padding;
+				background-clip: padding-box;
+
+				z-index: 2000;
+				position: fixed;
+				margin: auto;
+				top: 12px;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				width: 200px;
+				height: 50px;
+				overflow: hidden;
+			}
+
+			.pace .pace-progress {
+				-webkit-box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				-ms-box-sizing: border-box;
+				-o-box-sizing: border-box;
+				box-sizing: border-box;
+
+				-webkit-border-radius: 2px;
+				-moz-border-radius: 2px;
+				border-radius: 2px;
+
+				-webkit-background-clip: padding-box;
+				-moz-background-clip: padding;
+				background-clip: padding-box;
+
+				-webkit-transform: translate3d(0, 0, 0);
+				transform: translate3d(0, 0, 0);
+
+				display: block;
+				position: absolute;
+				right: 100%;
+				margin-right: -7px;
+				width: 93%;
+				top: 7px;
+				height: 14px;
+				font-size: 12px;
+				background: #29d;
+				color: #29d;
+				line-height: 60px;
+				font-weight: bold;
+				font-family: Helvetica, Arial, 'Lucida Grande', sans-serif;
+
+				-webkit-box-shadow: 120px 0 #fff, 240px 0 #fff;
+				-ms-box-shadow: 120px 0 #fff, 240px 0 #fff;
+				box-shadow: 120px 0 #fff, 240px 0 #fff;
+			}
+
+			.pace .pace-progress:after {
+				content: attr(data-progress-text);
+				display: inline-block;
+				position: fixed;
+				width: 45px;
+				text-align: right;
+				right: 0;
+				padding-right: 16px;
+				top: 4px;
+			}
+
+			.pace .pace-progress[data-progress-text='0%']:after {
+				right: -200px
+			}
+
+			.pace .pace-progress[data-progress-text='1%']:after {
+				right: -198.14px
+			}
+
+			.pace .pace-progress[data-progress-text='2%']:after {
+				right: -196.28px
+			}
+
+			.pace .pace-progress[data-progress-text='3%']:after {
+				right: -194.42px
+			}
+
+			.pace .pace-progress[data-progress-text='4%']:after {
+				right: -192.56px
+			}
+
+			.pace .pace-progress[data-progress-text='5%']:after {
+				right: -190.7px
+			}
+
+			.pace .pace-progress[data-progress-text='6%']:after {
+				right: -188.84px
+			}
+
+			.pace .pace-progress[data-progress-text='7%']:after {
+				right: -186.98px
+			}
+
+			.pace .pace-progress[data-progress-text='8%']:after {
+				right: -185.12px
+			}
+
+			.pace .pace-progress[data-progress-text='9%']:after {
+				right: -183.26px
+			}
+
+			.pace .pace-progress[data-progress-text='10%']:after {
+				right: -181.4px
+			}
+
+			.pace .pace-progress[data-progress-text='11%']:after {
+				right: -179.54px
+			}
+
+			.pace .pace-progress[data-progress-text='12%']:after {
+				right: -177.68px
+			}
+
+			.pace .pace-progress[data-progress-text='13%']:after {
+				right: -175.82px
+			}
+
+			.pace .pace-progress[data-progress-text='14%']:after {
+				right: -173.96px
+			}
+
+			.pace .pace-progress[data-progress-text='15%']:after {
+				right: -172.1px
+			}
+
+			.pace .pace-progress[data-progress-text='16%']:after {
+				right: -170.24px
+			}
+
+			.pace .pace-progress[data-progress-text='17%']:after {
+				right: -168.38px
+			}
+
+			.pace .pace-progress[data-progress-text='18%']:after {
+				right: -166.52px
+			}
+
+			.pace .pace-progress[data-progress-text='19%']:after {
+				right: -164.66px
+			}
+
+			.pace .pace-progress[data-progress-text='20%']:after {
+				right: -162.8px
+			}
+
+			.pace .pace-progress[data-progress-text='21%']:after {
+				right: -160.94px
+			}
+
+			.pace .pace-progress[data-progress-text='22%']:after {
+				right: -159.08px
+			}
+
+			.pace .pace-progress[data-progress-text='23%']:after {
+				right: -157.22px
+			}
+
+			.pace .pace-progress[data-progress-text='24%']:after {
+				right: -155.36px
+			}
+
+			.pace .pace-progress[data-progress-text='25%']:after {
+				right: -153.5px
+			}
+
+			.pace .pace-progress[data-progress-text='26%']:after {
+				right: -151.64px
+			}
+
+			.pace .pace-progress[data-progress-text='27%']:after {
+				right: -149.78px
+			}
+
+			.pace .pace-progress[data-progress-text='28%']:after {
+				right: -147.92px
+			}
+
+			.pace .pace-progress[data-progress-text='29%']:after {
+				right: -146.06px
+			}
+
+			.pace .pace-progress[data-progress-text='30%']:after {
+				right: -144.2px
+			}
+
+			.pace .pace-progress[data-progress-text='31%']:after {
+				right: -142.34px
+			}
+
+			.pace .pace-progress[data-progress-text='32%']:after {
+				right: -140.48px
+			}
+
+			.pace .pace-progress[data-progress-text='33%']:after {
+				right: -138.62px
+			}
+
+			.pace .pace-progress[data-progress-text='34%']:after {
+				right: -136.76px
+			}
+
+			.pace .pace-progress[data-progress-text='35%']:after {
+				right: -134.9px
+			}
+
+			.pace .pace-progress[data-progress-text='36%']:after {
+				right: -133.04px
+			}
+
+			.pace .pace-progress[data-progress-text='37%']:after {
+				right: -131.18px
+			}
+
+			.pace .pace-progress[data-progress-text='38%']:after {
+				right: -129.32px
+			}
+
+			.pace .pace-progress[data-progress-text='39%']:after {
+				right: -127.46px
+			}
+
+			.pace .pace-progress[data-progress-text='40%']:after {
+				right: -125.6px
+			}
+
+			.pace .pace-progress[data-progress-text='41%']:after {
+				right: -123.74px
+			}
+
+			.pace .pace-progress[data-progress-text='42%']:after {
+				right: -121.88px
+			}
+
+			.pace .pace-progress[data-progress-text='43%']:after {
+				right: -120.02px
+			}
+
+			.pace .pace-progress[data-progress-text='44%']:after {
+				right: -118.16px
+			}
+
+			.pace .pace-progress[data-progress-text='45%']:after {
+				right: -116.3px
+			}
+
+			.pace .pace-progress[data-progress-text='46%']:after {
+				right: -114.44px
+			}
+
+			.pace .pace-progress[data-progress-text='47%']:after {
+				right: -112.58px
+			}
+
+			.pace .pace-progress[data-progress-text='48%']:after {
+				right: -110.72px
+			}
+
+			.pace .pace-progress[data-progress-text='49%']:after {
+				right: -108.86px
+			}
+
+			.pace .pace-progress[data-progress-text='50%']:after {
+				right: -107px
+			}
+
+			.pace .pace-progress[data-progress-text='51%']:after {
+				right: -105.14px
+			}
+
+			.pace .pace-progress[data-progress-text='52%']:after {
+				right: -103.28px
+			}
+
+			.pace .pace-progress[data-progress-text='53%']:after {
+				right: -101.42px
+			}
+
+			.pace .pace-progress[data-progress-text='54%']:after {
+				right: -99.56px
+			}
+
+			.pace .pace-progress[data-progress-text='55%']:after {
+				right: -97.7px
+			}
+
+			.pace .pace-progress[data-progress-text='56%']:after {
+				right: -95.84px
+			}
+
+			.pace .pace-progress[data-progress-text='57%']:after {
+				right: -93.98px
+			}
+
+			.pace .pace-progress[data-progress-text='58%']:after {
+				right: -92.12px
+			}
+
+			.pace .pace-progress[data-progress-text='59%']:after {
+				right: -90.26px
+			}
+
+			.pace .pace-progress[data-progress-text='60%']:after {
+				right: -88.4px
+			}
+
+			.pace .pace-progress[data-progress-text='61%']:after {
+				right: -86.53999999999999px
+			}
+
+			.pace .pace-progress[data-progress-text='62%']:after {
+				right: -84.68px
+			}
+
+			.pace .pace-progress[data-progress-text='63%']:after {
+				right: -82.82px
+			}
+
+			.pace .pace-progress[data-progress-text='64%']:after {
+				right: -80.96000000000001px
+			}
+
+			.pace .pace-progress[data-progress-text='65%']:after {
+				right: -79.1px
+			}
+
+			.pace .pace-progress[data-progress-text='66%']:after {
+				right: -77.24px
+			}
+
+			.pace .pace-progress[data-progress-text='67%']:after {
+				right: -75.38px
+			}
+
+			.pace .pace-progress[data-progress-text='68%']:after {
+				right: -73.52px
+			}
+
+			.pace .pace-progress[data-progress-text='69%']:after {
+				right: -71.66px
+			}
+
+			.pace .pace-progress[data-progress-text='70%']:after {
+				right: -69.8px
+			}
+
+			.pace .pace-progress[data-progress-text='71%']:after {
+				right: -67.94px
+			}
+
+			.pace .pace-progress[data-progress-text='72%']:after {
+				right: -66.08px
+			}
+
+			.pace .pace-progress[data-progress-text='73%']:after {
+				right: -64.22px
+			}
+
+			.pace .pace-progress[data-progress-text='74%']:after {
+				right: -62.36px
+			}
+
+			.pace .pace-progress[data-progress-text='75%']:after {
+				right: -60.5px
+			}
+
+			.pace .pace-progress[data-progress-text='76%']:after {
+				right: -58.64px
+			}
+
+			.pace .pace-progress[data-progress-text='77%']:after {
+				right: -56.78px
+			}
+
+			.pace .pace-progress[data-progress-text='78%']:after {
+				right: -54.92px
+			}
+
+			.pace .pace-progress[data-progress-text='79%']:after {
+				right: -53.06px
+			}
+
+			.pace .pace-progress[data-progress-text='80%']:after {
+				right: -51.2px
+			}
+
+			.pace .pace-progress[data-progress-text='81%']:after {
+				right: -49.34px
+			}
+
+			.pace .pace-progress[data-progress-text='82%']:after {
+				right: -47.480000000000004px
+			}
+
+			.pace .pace-progress[data-progress-text='83%']:after {
+				right: -45.62px
+			}
+
+			.pace .pace-progress[data-progress-text='84%']:after {
+				right: -43.76px
+			}
+
+			.pace .pace-progress[data-progress-text='85%']:after {
+				right: -41.9px
+			}
+
+			.pace .pace-progress[data-progress-text='86%']:after {
+				right: -40.04px
+			}
+
+			.pace .pace-progress[data-progress-text='87%']:after {
+				right: -38.18px
+			}
+
+			.pace .pace-progress[data-progress-text='88%']:after {
+				right: -36.32px
+			}
+
+			.pace .pace-progress[data-progress-text='89%']:after {
+				right: -34.46px
+			}
+
+			.pace .pace-progress[data-progress-text='90%']:after {
+				right: -32.6px
+			}
+
+			.pace .pace-progress[data-progress-text='91%']:after {
+				right: -30.740000000000002px
+			}
+
+			.pace .pace-progress[data-progress-text='92%']:after {
+				right: -28.880000000000003px
+			}
+
+			.pace .pace-progress[data-progress-text='93%']:after {
+				right: -27.02px
+			}
+
+			.pace .pace-progress[data-progress-text='94%']:after {
+				right: -25.16px
+			}
+
+			.pace .pace-progress[data-progress-text='95%']:after {
+				right: -23.3px
+			}
+
+			.pace .pace-progress[data-progress-text='96%']:after {
+				right: -21.439999999999998px
+			}
+
+			.pace .pace-progress[data-progress-text='97%']:after {
+				right: -19.58px
+			}
+
+			.pace .pace-progress[data-progress-text='98%']:after {
+				right: -17.72px
+			}
+
+			.pace .pace-progress[data-progress-text='99%']:after {
+				right: -15.86px
+			}
+
+			.pace .pace-progress[data-progress-text='100%']:after {
+				right: -14px
+			}
+
+
+			.pace .pace-activity {
+				position: absolute;
+				width: 100%;
+				height: 28px;
+				z-index: 2001;
+				box-shadow: inset 0 0 0 2px #29d, inset 0 0 0 7px #FFF;
+				border-radius: 10px;
+			}
+
+			.pace.pace-inactive {
+				display: none;
+			}
+
+			.loading-overlay-content {
+				text-transform: uppercase;
+				letter-spacing: 0.4em;
+				font-size: 1.15em;
+				font-weight: bold;
+			}
+
+			.loading-overlay.loading-theme-dark {
+				background-color: #000;
+				color: #fff;
+			}
+
+			.loading-overlay.loading-theme-light {
+				background-color: #fff;
+				color: #000;
+			}
+
+			.loading-overlay.loading-theme-green {
+				background-color: #2ecc71;
+				color: #fff;
+			}
+
+			.loading-div {
+				height: 180px;
+				padding: 15px 25px;
+				color: #eee;
+			}
+
+			body.pace-running:before {
+				content: '';
+				position: fixed;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+				z-index: 1500;
+				background-color: #e6e8f257;
+			}
+		</style>
+	</div>
+
+	<div th:fragment="js">
+		<script type="text/javascript" th:src="@{assets/js/jquery-3.5.1.js}"></script>
+		<script type="text/javascript" th:src="@{assets/plugins/global/plugins.bundle.js}"></script>
+		<script type="text/javascript" th:src="@{assets/plugins/custom/prismjs/prismjs.bundle.js}"></script>
+		<script type="text/javascript" th:src="@{assets/js/scripts.bundle.js}"></script>
+		<script type="text/javascript" th:src="@{assets/plugins/custom/fullcalendar/fullcalendar.bundle.js}"></script>
+		<script type="text/javascript" th:src="@{assets/js/pages/widgets.js}"></script>
+		<script type="text/javascript" th:src="@{assets/plugins/custom/datatables/datatables.bundle.js}"></script>
+		<script type="text/javascript" th:src="@{assets/js/pace.js}"></script>
+		<script type="text/javascript" th:src="@{assets/js/jquery.loading.js}"></script>
+		<script type="text/javascript" th:src="@{assets/js/jquery.validate.min.js}"></script>
+		<script src="https://cdn.jsdelivr.net/npm/datatables-buttons-excel-styles@1.0.1/js/buttons.html5.styles.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/datatables-buttons-excel-styles@1.0.1/js/buttons.html5.styles.templates.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.js"></script>
+		<script src="https://files.codepedia.info/files/uploads/iScripts/html2canvas.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+		<script type="text/javascript">
+			$.ajaxSetup({
+				headers: {
+					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+				}
+			});
+			$(document).ready(function() {
+				load_menu("page-olt-devices.php");
+			});
+
+			$('#search-web').click(function(event) {
+				event.preventDefault();
+				if ($("#web-search").val() === "") {} else {
+					document.getElementById['iframe'].src = $("#web-search").val();
+				}
+			});
+			$('.datetimepicker-input').datetimepicker({
+				format: 'dd-mm-yyyy hh:ii'
+			});
+
+			function active_menu(id) {
+				$("ul.menu-nav li.menu-item").removeClass("menu-item-active");
+				$('#' + id).addClass('menu-item-active');
+			}
+
+			function load_menu(urls) {
+				var perfix_url = urls.replace(/-/g, "/");
+				var fix_url = uri + perfix_url;
+				$("#main-content").load(fix_url);
+			}
+
+			function alert_show(msg, sts = true) {
+				toastr.options = {
+					"closeButton": false,
+					"debug": false,
+					"newestOnTop": false,
+					"progressBar": false,
+					"positionClass": "toast-top-right",
+					"preventDuplicates": false,
+					"onclick": null,
+					"showDuration": "300",
+					"hideDuration": "1000",
+					"timeOut": "5000",
+					"extendedTimeOut": "1000",
+					"showEasing": "swing",
+					"hideEasing": "linear",
+					"showMethod": "fadeIn",
+					"hideMethod": "fadeOut",
+				};
+
+				if (sts)
+					toastr["success"](msg);
+				else
+					toastr["error"](msg);
+
+			}
+
+			function download_image(id_img, id_btn, name_img = "img_name_download") {
+
+				html2canvas(element, {
+					onrendered: function(canvas) {
+						$("#previewImage").html(canvas);
+						getCanvas = canvas;
+					}
+				});
+				$("#modal_preview_images").show();
+			}
+
+			$("#btn-Convert-Html2Image").on('click', function() {
+				var imgageData = getCanvas.toDataURL("image/png");
+				var newData = imgageData.replace(/^data:image\/png/, "data:application/octet-stream");
+				$("#btn-Convert-Html2Image").attr("download", "your_pic_name.png").attr("href", newData);
+			});
+		</script>
+		<script type="text/javascript">
+			var KTAppSettings = {
+				"breakpoints": {
+					"sm": 576,
+					"md": 768,
+					"lg": 992,
+					"xl": 1200,
+					"xxl": 1200
+				},
+				"colors": {
+					"theme": {
+						"base": {
+							"white": "#ffffff",
+							"primary": "#6993FF",
+							"secondary": "#E5EAEE",
+							"success": "#1BC5BD",
+							"info": "#8950FC",
+							"warning": "#FFA800",
+							"danger": "#F64E60",
+							"light": "#F3F6F9",
+							"dark": "#212121"
+						},
+						"light": {
+							"white": "#ffffff",
+							"primary": "#E1E9FF",
+							"secondary": "#ECF0F3",
+							"success": "#C9F7F5",
+							"info": "#EEE5FF",
+							"warning": "#FFF4DE",
+							"danger": "#FFE2E5",
+							"light": "#F3F6F9",
+							"dark": "#D6D6E0"
+						},
+						"inverse": {
+							"white": "#ffffff",
+							"primary": "#ffffff",
+							"secondary": "#212121",
+							"success": "#ffffff",
+							"info": "#ffffff",
+							"warning": "#ffffff",
+							"danger": "#ffffff",
+							"light": "#464E5F",
+							"dark": "#ffffff"
+						}
+					},
+					"gray": {
+						"gray-100": "#F3F6F9",
+						"gray-200": "#ECF0F3",
+						"gray-300": "#E5EAEE",
+						"gray-400": "#D6D6E0",
+						"gray-500": "#B5B5C3",
+						"gray-600": "#80808F",
+						"gray-700": "#464E5F",
+						"gray-800": "#1B283F",
+						"gray-900": "#212121"
+					}
+				},
+				"font-family": "Poppins"
+			};
+		</script>
+	</div>
+</head>
+
+<body>
+	<div th:fragment="header-mobile">
+		<div id="kt_header_mobile" class="header-mobile align-items-center header-mobile-fixed">
+			<a href="#">
+				<img alt="Logo" th:src="@{assets/images/inkombizz.jpeg}">
+			</a>
+			<div class="d-flex align-items-center">
+				<button class="btn p-0 burger-icon ml-4" id="kt_aside_mobile_toggle">
+					<span></span>
+				</button>
+				<button class="btn btn-hover-text-primary p-0 ml-2" id="kt_header_mobile_topbar_toggle">
+					<span class="svg-icon svg-icon-xl">
+						<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+							<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+								<polygon points="0 0 24 0 24 24 0 24"></polygon>
+								<path d="M12,11 C9.790861,11 8,9.209139 8,7 C8,4.790861 9.790861,3 12,3 C14.209139,3 16,4.790861 16,7 C16,9.209139 14.209139,11 12,11 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"></path>
+								<path
+									d="M3.00065168,20.1992055 C3.38825852,15.4265159 7.26191235,13 11.9833413,13 C16.7712164,13 20.7048837,15.2931929 20.9979143,20.2 C21.0095879,20.3954741 20.9979143,21 20.2466999,21 C16.541124,21 11.0347247,21 3.72750223,21 C3.47671215,21 2.97953825,20.45918 3.00065168,20.1992055 Z"
+									fill="#000000" fill-rule="nonzero"></path>
+							</g>
+						</svg>
+					</span>
+				</button>
+			</div>
+		</div>
+	</div>
+	<div th:fragment="header-nav">
+		<div id="kt_header" class="header bg-danger header-fixed">
+			<div class="container-fluid d-flex align-items-stretch justify-content-between">
+				<div class="header-menu-wrapper header-menu-wrapper-left" id="kt_header_menu_wrapper">
+					<div id="kt_header_menu" class="header-menu header-menu-mobile header-menu-layout-default">
+					</div>
+				</div>
+				<div class="topbar">
+					<div class="topbar-item">
+						<span class="text-white font-weight-bold font-size-base d-md-inline mr-1">Periode,</span>
+						<select class="form-control" name="sess_month" required="">
+							<option value="1">January</option>
+							<option value="2">February</option>
+							<option value="3">March</option>
+							<option value="4">April</option>
+							<option value="5">May</option>
+							<option value="6">June</option>
+							<option value="7">July</option>
+							<option value="8">August</option>
+							<option value="9">September</option>
+							<option value="10">October</option>
+							<option value="11">November</option>
+							<option value="12" selected="">December</option>
+						</select>
+						&nbsp;
+						<select class="form-control" name="sess_year" required="">
+							<option value="2019">2019</option>
+							<option value="2020">2020</option>
+							<option value="2021">2021</option>
+							<option value="2022">2022</option>
+							<option value="2023">2023</option>
+							<option value="2024">2024</option>
+							<option value="2025">2025</option>
+						</select>
+						&nbsp;&nbsp;
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div th:fragment="header-side">
+		<div class="aside aside-left aside-fixed d-flex flex-column flex-row-auto" id="kt_aside">
+			<div class="brand flex-column-auto" id="kt_brand" kt-hidden-height="65" style="">
+				<a href="#" class="brand-logo">
+					<img alt="Logo" th:src="@{assets/images/inkombizz.jpeg}">
+				</a>
+				<button class="brand-toggle btn btn-sm px-0" id="kt_aside_toggle">
+					<span class="svg-icon svg-icon svg-icon-xl">
+						<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+							<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+								<polygon points="0 0 24 0 24 24 0 24"></polygon>
+								<path
+									d="M5.29288961,6.70710318 C4.90236532,6.31657888 4.90236532,5.68341391 5.29288961,5.29288961 C5.68341391,4.90236532 6.31657888,4.90236532 6.70710318,5.29288961 L12.7071032,11.2928896 C13.0856821,11.6714686 13.0989277,12.281055 12.7371505,12.675721 L7.23715054,18.675721 C6.86395813,19.08284 6.23139076,19.1103429 5.82427177,18.7371505 C5.41715278,18.3639581 5.38964985,17.7313908 5.76284226,17.3242718 L10.6158586,12.0300721 L5.29288961,6.70710318 Z"
+									fill="#000000" fill-rule="nonzero" transform="translate(8.999997, 11.999999) scale(-1, 1) translate(-8.999997, -11.999999)"></path>
+								<path
+									d="M10.7071009,15.7071068 C10.3165766,16.0976311 9.68341162,16.0976311 9.29288733,15.7071068 C8.90236304,15.3165825 8.90236304,14.6834175 9.29288733,14.2928932 L15.2928873,8.29289322 C15.6714663,7.91431428 16.2810527,7.90106866 16.6757187,8.26284586 L22.6757187,13.7628459 C23.0828377,14.1360383 23.1103407,14.7686056 22.7371482,15.1757246 C22.3639558,15.5828436 21.7313885,15.6103465 21.3242695,15.2371541 L16.0300699,10.3841378 L10.7071009,15.7071068 Z"
+									fill="#000000" fill-rule="nonzero" opacity="0.3" transform="translate(15.999997, 11.999999) scale(-1, 1) rotate(-270.000000) translate(-15.999997, -11.999999)"></path>
+							</g>
+						</svg>
+					</span>
+				</button>
+			</div>
+			<div class="aside-menu-wrapper flex-column-fluid" id="kt_aside_menu_wrapper">
+				<div id="kt_aside_menu" class="aside-menu my-4 scroll ps" data-menu-vertical="1" data-menu-scroll="1" data-menu-dropdown-timeout="500" style="height: 444px; overflow: hidden;">
+					<ul class="menu-nav" id="menu-content">
+						<li class="menu-item menu-item-submenu" aria-haspopup="true">
+							<a href="javascript:;" class="menu-link menu-toggle">
+								<span class="svg-icon svg-icon-primary svg-icon-2x">
+									<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+										<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+											<rect x="0" y="0" width="24" height="24"></rect>
+											<rect fill="#000000" x="4" y="4" width="7" height="7" rx="1.5"></rect>
+											<path
+												d="M5.5,13 L9.5,13 C10.3284271,13 11,13.6715729 11,14.5 L11,18.5 C11,19.3284271 10.3284271,20 9.5,20 L5.5,20 C4.67157288,20 4,19.3284271 4,18.5 L4,14.5 C4,13.6715729 4.67157288,13 5.5,13 Z M14.5,4 L18.5,4 C19.3284271,4 20,4.67157288 20,5.5 L20,9.5 C20,10.3284271 19.3284271,11 18.5,11 L14.5,11 C13.6715729,11 13,10.3284271 13,9.5 L13,5.5 C13,4.67157288 13.6715729,4 14.5,4 Z M14.5,13 L18.5,13 C19.3284271,13 20,13.6715729 20,14.5 L20,18.5 C20,19.3284271 19.3284271,20 18.5,20 L14.5,20 C13.6715729,20 13,19.3284271 13,18.5 L13,14.5 C13,13.6715729 13.6715729,13 14.5,13 Z"
+												fill="#000000" opacity="0.3"></path>
+										</g>
+									</svg>
+								</span>
+								<span class="menu-text">Development</span><i class="menu-arrow"></i>
+							</a>
+							<div class="menu-submenu" kt-hidden-height="320" style=""><i class="menu-arrow"></i>
+								<ul class="menu-subnav">
+									<li class="menu-item" aria-haspopup="true" id="1" onclick="active_menu(10001)">
+										<a href="#" onclick="load_menu('page-datatable.php')" class="menu-link">
+											<span class="svg-icon svg-icon-primary svg-icon-2x">
+												<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+													<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+														<rect x="0" y="0" width="24" height="24"></rect>
+														<rect fill="#000000" opacity="0.3" x="13" y="4" width="3" height="16" rx="1.5"></rect>
+														<rect fill="#000000" x="8" y="9" width="3" height="11" rx="1.5"></rect>
+														<rect fill="#000000" x="18" y="11" width="3" height="9" rx="1.5"></rect>
+														<rect fill="#000000" x="3" y="13" width="3" height="7" rx="1.5"></rect>
+													</g>
+												</svg>
+											</span>
+											<span class="menu-text">Datatable</span>
+										</a>
+									</li>
+									<li class="menu-item" aria-haspopup="true" id="2" onclick="active_menu(10001)">
+										<a href="#" onclick="load_menu('page-form.php')" class="menu-link">
+											<span class="svg-icon svg-icon-primary svg-icon-2x">
+												<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+													<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+														<rect x="0" y="0" width="24" height="24"></rect>
+														<rect fill="#000000" opacity="0.3" x="13" y="4" width="3" height="16" rx="1.5"></rect>
+														<rect fill="#000000" x="8" y="9" width="3" height="11" rx="1.5"></rect>
+														<rect fill="#000000" x="18" y="11" width="3" height="9" rx="1.5"></rect>
+														<rect fill="#000000" x="3" y="13" width="3" height="7" rx="1.5"></rect>
+													</g>
+												</svg>
+											</span>
+											<span class="menu-text">Form Page</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
