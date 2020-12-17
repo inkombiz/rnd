@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.inkombizz.auth</groupId>
     <artifactId>api_inkombizz_auth</artifactId>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
     <name>api_inkombizz_auth</name>
     <url>http://maven.apache.org</url>
