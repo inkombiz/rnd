@@ -17,10 +17,10 @@ import com.inkombizz.web.repository.UserRepository;
 
 public class UserService {
 
-	private final String REST_SERVICE_URL = "http://localhost:8181/user/";
+	private final String REST_SERVICE_URL = "http://localhost:8181";
 
 	private static HttpHeaders getHeaders() {
-		String adminuserCredentials = "adminuser:adminpassword";
+		String adminuserCredentials = "mradmin:mradmin";
 		String encodedCredentials = new String(Base64.encodeBase64(adminuserCredentials.getBytes()));
 
 		HttpHeaders httpHeaders = new HttpHeaders();
@@ -29,50 +29,67 @@ public class UserService {
 		return httpHeaders;
 	}
 
-	public List<UserRepository> listAllUsers() {
-		System.out.println("Getting all users");
+	public String getLoginToken(String username, String password) {
+		String restUrl = REST_SERVICE_URL + "/v1/oauth/login";
+		
 		RestTemplate restTemplate = new RestTemplate();
+		HttpHeaders httpHeaders = new HttpHeaders(getHeaders());
 
-		HttpHeaders httpHeaders = getHeaders();
+		UserRepository model = new UserRepository();
+		model.setUsername(username);
+		model.setPassword(password);
+		HttpEntity<UserRepository> request = new HttpEntity<UserRepository>(model,httpHeaders);
 
-		HttpEntity<String> httpEntity = new HttpEntity<>(httpHeaders);
-
-		ResponseEntity<List> responseEntity = restTemplate.exchange(REST_SERVICE_URL, HttpMethod.GET, httpEntity,
-				List.class);
-
-		if (responseEntity.hasBody()) {
-			List<UserRepository> users = responseEntity.getBody();
-			if (users != null) {
-				return users;
-			}
-		}
-
-		return null;
-
+		ResponseEntity<String> responseEntityStr = restTemplate.postForEntity(restUrl, request, String.class);
+		
+		httpHeaders = responseEntityStr.getHeaders();
+		return httpHeaders.getFirst("Authorization");
 	}
+//
+//	public List<UserRepository> listAllUsers() {
+//		System.out.println("Getting all users");
+//		RestTemplate restTemplate = new RestTemplate();
+//
+//		HttpHeaders httpHeaders = getHeaders();
+//
+//		HttpEntity<String> httpEntity = new HttpEntity<>(httpHeaders);
+//
+//		ResponseEntity<List> responseEntity = restTemplate.exchange(REST_SERVICE_URL, HttpMethod.GET, httpEntity,
+//				List.class);
+//
+//		if (responseEntity.hasBody()) {
+//			List<UserRepository> users = responseEntity.getBody();
+//			if (users != null) {
+//				return users;
+//			}
+//		}
+//
+//		return null;
+//
+//	}
+//
+//	public void getUser(long id) {
+//		System.out.println("Getting a user ");
+//
+//		String restUrl = REST_SERVICE_URL + id;
+//
+//		RestTemplate restTemplate = new RestTemplate();
+//
+//		HttpHeaders httpHeaders = getHeaders();
+//
+//		HttpEntity<String> httpEntity = new HttpEntity<>(httpHeaders);
+//
+//		ResponseEntity<String> responseEntity = restTemplate.exchange(restUrl, HttpMethod.GET, httpEntity,
+//				String.class);
+//
+//		if (responseEntity.hasBody()) {
+//			JSONObject jsonObject = new JSONObject(responseEntity.getBody());
+//
+//			System.out.println(jsonObject.get("firstname"));
+//			System.out.println(jsonObject.get("lastname"));
+//		} else {
+//			System.out.println("User not found");
+//		}
 
-	public void getUser(long id) {
-		System.out.println("Getting a user ");
-
-		String restUrl = REST_SERVICE_URL + id;
-
-		RestTemplate restTemplate = new RestTemplate();
-
-		HttpHeaders httpHeaders = getHeaders();
-
-		HttpEntity<String> httpEntity = new HttpEntity<>(httpHeaders);
-
-		ResponseEntity<String> responseEntity = restTemplate.exchange(restUrl, HttpMethod.GET, httpEntity,
-				String.class);
-
-		if (responseEntity.hasBody()) {
-			JSONObject jsonObject = new JSONObject(responseEntity.getBody());
-
-			System.out.println(jsonObject.get("firstname"));
-			System.out.println(jsonObject.get("lastname"));
-		} else {
-			System.out.println("User not found");
-		}
-
-	}
+//	}
 }

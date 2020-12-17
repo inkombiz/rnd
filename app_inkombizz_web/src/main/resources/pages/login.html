@@ -144,26 +144,17 @@
           <script>
             $(function() {
               $("#kt_login_signin_submit").click(function() {
-                var username = $("#username").val();
-                var password = $("#password").val();
-                $.ajax({
-                  cache: true,
-                  type: "POST",
-                  url: "/authenticate",
-                  contentType: "application/json;charset=UTF-8",
-                  data: JSON.stringify({
-                    "username": username,
-                    "password": password
-                  }),
-                  dataType: "json",
-                  async: false,
-                  error: function(request) {
-                    alert("Connection error");
+                var settings = {
+                  "url": "http://localhost:9010/login",
+                  "method": "POST",
+                  "headers": {
+                    "Content-Type": "application/json"
                   },
-                  success: function(data) {
-                    alert(data.token);
-                    localStorage.setItem("token", data.token);
-                  }
+                  "data": JSON.stringify($("#kt_login_signin_form").serialize()),
+                };
+                $.ajax(settings).done(function(response) {
+                  alert(response);
+                  localStorage.setItem("token", response);
                 });
               });
             });

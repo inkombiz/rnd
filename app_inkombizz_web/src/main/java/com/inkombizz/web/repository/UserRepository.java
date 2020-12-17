@@ -1,5 +1,6 @@
 package com.inkombizz.web.repository;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -15,9 +16,11 @@ import lombok.Setter;
 @Getter
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class UserRepository {
-   
-    private String code;
+public class UserRepository implements Serializable {
+
+    private static final long serialVersionUID = 5926468583005150707L;
+    
+	private String code;
     private String username;
     private String password;
     private String email;
