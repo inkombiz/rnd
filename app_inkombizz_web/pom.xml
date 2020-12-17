@@ -94,12 +94,4 @@
 			</plugin>
 		</plugins>
 	</build>
-	<tomcat-users xmlns="http://tomcat.apache.org/xml"
-	              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	              xsi:schemaLocation="http://tomcat.apache.org/xml tomcat-users.xsd"
-	              version="1.0">
-	  <role rolename="manager-script"/>
-	  <role rolename="manager-jmx"/>
-	  <user username="admin" password="admin" roles="manager-script,manager-jmx"/>
-	</tomcat-users>
 </project>
