@@ -1,5 +1,5 @@
 # Use an official OpenJDK runtime as a parent image
-FROM tomcat:8.0-alpine
+FROM tomcat:8-jre8-alpine
 
 LABEL maintainer="imam@inkombizz.co.id"
 
