@@ -12,6 +12,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 public class ApiApplication 
 	extends SpringBootServletInitializer{
 	//Test Auth by Waw!
+	//Test Auth by Waw! --2
 	public static void main(String[] args) {
 		SpringApplication.run(ApiApplication.class, args);
 	}
