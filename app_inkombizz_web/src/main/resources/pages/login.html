@@ -112,7 +112,7 @@
         <div class="d-flex flex-column-fluid flex-center">
           <div class="login-form login-signin">
 
-            <form class="form" novalidate="novalidate" id="kt_login_signin_form" th:action="@{/authenticate}" method="post">
+            <form class="form" novalidate="novalidate" id="kt_login_signin_form" th:action="@{/login}" method="post">
               <div class="pb-0 pt-lg-0 pt-5">
                 <h3 class="font-weight-bolder text-dark font-size-h4 font-size-h1-lg">Develop By Inkombizz</h3>
                 <span class="text-muted font-weight-bold font-size-h4">Course-NET.</span>
@@ -137,28 +137,10 @@
               </div>
 
               <div class="pb-lg-0 pb-5">
-                <button type="button" id="kt_login_signin_submit" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3">Sign In</button>
+                <button type="submit" name="kt_login_signin_submit" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3">Sign In</button>
               </div>
             </form>
           </div>
-          <script>
-            $(function() {
-              $("#kt_login_signin_submit").click(function() {
-                var settings = {
-                  "url": "http://localhost:9010/login",
-                  "method": "POST",
-                  "headers": {
-                    "Content-Type": "application/json"
-                  },
-                  "data": JSON.stringify($("#kt_login_signin_form").serialize()),
-                };
-                $.ajax(settings).done(function(response) {
-                  alert(response);
-                  localStorage.setItem("token", response);
-                });
-              });
-            });
-          </script>
         </div>
       </div>
     </div>

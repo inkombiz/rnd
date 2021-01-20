@@ -1,54 +1,32 @@
 package com.inkombizz.web.controller;
 
-import java.util.Arrays;
-
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 import com.inkombizz.web.config.BaseSession;
-import com.inkombizz.web.repository.UserRepository;
 import com.inkombizz.web.service.UserService;
+
+import lombok.Getter;
+import lombok.Setter;
 
 @RestController
 public class UserController {
+
+	@Autowired
+	private BaseSession baseSession;
 	
+	@Getter @Setter
 	private UserService userService;
-
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public ResponseEntity<String> listAllUsers(@RequestBody UserRepository model) {
-
-		String REST_SERVICE_URL = "http://localhost:8181";
-		String restUrl = REST_SERVICE_URL + "/v1/oauth/login";
-		
-		RestTemplate restTemplate = new RestTemplate();
-		HttpHeaders httpHeaders = new HttpHeaders();
-		httpHeaders.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-		HttpEntity<UserRepository> request = new HttpEntity<UserRepository>(model,httpHeaders);
-
-		ResponseEntity<String> responseEntityStr = restTemplate.postForEntity(restUrl, request, String.class);
-		
-		httpHeaders = responseEntityStr.getHeaders();
-		String token =  httpHeaders.getFirst("Authorization");
-		BaseSession sess = new BaseSession();
-		sess.setToken(token);
-		sess.setUserName(model.getUsername());
-		return new ResponseEntity<>(token, HttpStatus.OK);
-	}
 
 	@RequestMapping(value = "/session", method = RequestMethod.GET)
 	public ResponseEntity<String> getSessionString(HttpServletRequest request) {
-		BaseSession sess = (BaseSession)request.getSession();
-		return new ResponseEntity<>(sess.getToken(), HttpStatus.OK);
+		return new ResponseEntity<>(baseSession.getToken(), HttpStatus.OK);
 	}
 //
 //	@RequestMapping(value = "/user/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
